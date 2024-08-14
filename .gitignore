@@ -1,3 +1,73 @@
-writable/logs/*.log
+# Logs and error reports
+writable/logs/*
+!writable/logs/index.html
+!writable/logs/.gitignore
 
-writable/debugbar/*.json
+# Cache directory
+writable/cache/*
+!writable/cache/index.html
+!writable/cache/.gitignore
+
+# Sessions and other runtime data
+writable/session/*
+!writable/session/index.html
+!writable/session/.gitignore
+
+# Debug toolbar data
+writable/debugbar/*
+!writable/debugbar/index.html
+!writable/debugbar/.gitignore
+
+# File uploads
+writable/uploads/*
+!writable/uploads/index.html
+!writable/uploads/.gitignore
+
+# Environment settings file
+.env
+.env.*
+!env
+
+# IDE-specific files
+*.idea/
+*.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Composer dependencies
+/vendor/*
+/composer.lock
+
+# Node.js dependencies
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+/yarn-debug.log
+/pnpm-debug.log
+
+# PHPStorm
+/.idea
+
+# Symfony
+/.symfony
+
+# MacOS
+.DS_Store
+
+# Thumbnails
+Thumbs.db
+
+# SFTP configuration file
+*.sftp-config.json
+
+# Temporary files and backup files
+*.swp
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# Other unwanted files
+*.log
+*.cache
+*.pid
