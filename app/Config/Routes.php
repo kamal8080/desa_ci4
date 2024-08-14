@@ -15,3 +15,5 @@ $routes->get('/kontak', 'Kontak::index');
 // AUTH ROUTES
 $routes->get('login', 'Auth::index');
 $routes->get('register', 'Auth::register');
+// AUTH ADMIN 
+$routes->get('dashboard', 'admin::index');
