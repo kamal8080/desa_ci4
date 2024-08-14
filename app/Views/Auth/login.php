@@ -12,6 +12,24 @@
   </div>
   <div class="card">
     <div class="card-body register-card-body">
+
+      <?php $errors = session()->getFlashdata('error'); ?>
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger" role="alert">
+              <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li><?= esc($error) ?></li>
+                <?php endforeach ?>
+              </ul>
+            </div>
+      <?php endif ?>
+        <?php if (session()->getFlashdata('pesan')): ?>
+            <div class="alert alert-danger" role="alert">
+                <?= session()->getFlashdata('pesan'); ?>
+            </div>
+        <?php endif ?>
+        
+        <?= form_open('login/cek_login') ?>
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -33,7 +51,9 @@
             <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
         </div>
-      <a href="#" class="text-center">Belum Mempunyai Akun? Register</a>
+        <?= form_close() ?>
+
+      <a href="<?= base_url('register') ?>" class="text-center">Belum Mempunyai Akun? Register</a>
     </div>
   </div>
 </div>
