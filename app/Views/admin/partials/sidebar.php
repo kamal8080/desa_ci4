@@ -12,9 +12,6 @@
                         case 2:
                             echo "Karyawan"; 
                             break;
-                        default:
-                            echo "Guest";
-                            break;
                     }
                     ?>
                 </a>
@@ -42,7 +39,7 @@
                 if (session()->get('level') == 1) {
                     renderMenuItem('dashboard/user', 'fa-user', 'List User');
                 }
-                renderMenuItem('auth/logout', 'fa-sign-out-alt', 'Log Out');
+                renderMenuItem('logout', 'fa-sign-out-alt', 'Log Out');
                 ?>
             </ul>
         </nav>

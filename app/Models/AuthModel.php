@@ -8,6 +8,12 @@ class AuthModel extends Model
 {
     protected $table = 'users';
 
+        public function save_register($data)
+    {
+        $query = $this->db->table('users')->insert($data);
+        return $query;
+    }
+
     public function login($email, $password)
     {
         $query = $this->db->table('users')->getWhere(['email' => $email]);
@@ -18,4 +24,13 @@ class AuthModel extends Model
         }
         return false;
     }
+
+        public function checkEmailExists($email)
+    {
+        $builder = $this->db->table('users');
+        $builder->where('email', $email);
+        $query = $builder->get();
+        return $query->getRowArray();
+    }
+
 }
