@@ -12,6 +12,24 @@
   </div>
   <div class="card">
     <div class="card-body register-card-body">
+      <?php $errors = session()->getFlashdata('errors'); ?>
+      <?php if (!empty($errors)): ?>
+      <div class="alert alert-danger" role="alert">
+          <ul>
+          <?php foreach ($errors as $error): ?>
+              <li><?= esc($error) ?></li>
+          <?php endforeach ?>
+          </ul>
+      </div>
+      <?php endif ?>
+
+      <?php if (session()->getFlashdata('pesan')): ?>
+      <div class="alert alert-danger" role="alert">
+          <?= session()->getFlashdata('pesan'); ?>
+      </div>
+      <?php endif ?>
+
+      <?= form_open('register/save_register') ?>
         <div class="input-group mb-3">
           <input name="nama" class="form-control" placeholder="Full name">
           <div class="input-group-append">
@@ -49,9 +67,22 @@
             <button type="submit" class="btn btn-primary btn-block">Register</button>
           </div>
         </div>
-      <a href="#" class="text-center">Sudah Mempunyai Akun? Login</a>
+      <?= form_close() ?>
+
+      <a href="<?= base_url('login') ?>" class="text-center">Sudah Mempunyai Akun? Login</a>
     </div>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 5000);
+    });
+</script>
 </body>
+</html>
