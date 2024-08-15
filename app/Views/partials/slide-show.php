@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                    <img src="https://dummyimage.com/600x400" alt="Gambar Desa" width="400" height="300">
+                    <img src="<?php echo base_url('img/400x300.png');?>" alt="Gambar Desa" width="400" height="300">
                 </div>
             </div>
         </div>

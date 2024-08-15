@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\PemberitahuanModel;
+use App\Models\KoetanModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;
@@ -10,12 +11,14 @@ class Pemberitahuan extends BaseController
 {
     protected $PemberitahuanModel;
     protected $validation;
+    protected $KontakModel;
 
     public function __construct()
 
     {
         helper(['url', 'form']);
         $this->PemberitahuanModel = new PemberitahuanModel();
+        $this->KontakModel = new KontakModel();
         $this->validation = \Config\Services::validation();
     }
 
@@ -23,9 +26,11 @@ class Pemberitahuan extends BaseController
     {           
         $PemberitahuanModel = new PemberitahuanModel();
         $data['data'] = $PemberitahuanModel->Get();
+        $kontakModel = new KontakModel();
+        $kontak['kontak'] = $kontakModel->Get();
         return view('themes/header')
             . view('PemberitahuanDanPengumuman', $data)
-            . view('themes/footer');
+            . view('themes/footer', $kontak);
     }
 
     public function AdminPemberitahuan()
@@ -39,8 +44,8 @@ class Pemberitahuan extends BaseController
     }
 
 
-public function TambahData()
-{
+    public function TambahData()
+    {
     $PemberitahuanModel = new PemberitahuanModel();
 
         $data = [
@@ -52,7 +57,7 @@ public function TambahData()
         $PemberitahuanModel->TambahData($data);
         return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data berhasil ditambahkan');
 
-}
+    }
 
     public function HapusData($id)
     {
@@ -67,7 +72,7 @@ public function TambahData()
     }
 
     public function EditData($id)
-{
+    {
     $PemberitahuanModel = new PemberitahuanModel();
     $Pemberitahuan = $PemberitahuanModel->find($id);
     if ($Pemberitahuan) {
@@ -77,10 +82,10 @@ public function TambahData()
             'isi' => $this->request->getPost('isi'),
         ];
         $PemberitahuanModel->update($id, $data);
-        return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data berhasil diperbarui');
+        return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data Pemberitahuan berhasil diperbarui');
     } else {
-        return redirect()->back()->with('pesan', 'Data tidak ditemukan');
+        return redirect()->back()->with('pesan', 'Data Pemberitahuan gagal diperbarui');
     }
-}
+    }
 
 }
