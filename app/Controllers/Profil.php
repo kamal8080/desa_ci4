@@ -17,9 +17,12 @@ class Profil extends BaseController
     }
 
     public function index()
-    {
+    {   
+        $profilModel = new ProfilModel();
+        $data['data'] = $profilModel->Get();
+
     return view('partials/header')
-    . view('Profil')
+    . view('Profil', $data)
     . view('partials/footer');
     }
 
