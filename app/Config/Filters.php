@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'authfilter'    => \App\Filters\AuthFilter::class,
     ];
 
     /**
@@ -53,6 +54,7 @@ class Filters extends BaseFilters
         'before' => [
             'forcehttps', // Force Global Secure Requests
             'pagecache',  // Web Page Caching
+            
         ],
         'after' => [
             'pagecache',   // Web Page Caching
@@ -68,17 +70,26 @@ class Filters extends BaseFilters
      * @var array<string, array<string, array<string, string>>>|array<string, list<string>>
      */
     public array $globals = [
-        'before' => [
-            // 'honeypot',
-            // 'csrf',
-            // 'invalidchars',
+        'before' => [ //Halaman Yang Bisa Di Akses Tanpa Login
+            'authfilter' => ['except' => [
+                'login', 'login/*',
+                'register', 'register/*',
+                'auth', 'auth/*',
+                '/', '/',
+                'profil', 'profil/*',
+                'layanan', 'layanan/*',
+                'berita', 'berita/*',
+                'kependudukan', 'kependudukan/*',
+                'kontak', 'kontak/*',
+                'dashboard', 'dashboard/*',
+                'public', 'public/*',
+            ]],
         ],
         'after' => [
-            // 'honeypot',
-            // 'secureheaders',
+            // Tidak perlu mengatur authfilter di after
         ],
     ];
-
+    
     /**
      * List of filter aliases that works on a
      * particular HTTP method (GET, POST, etc.).

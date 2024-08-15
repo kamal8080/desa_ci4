@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\PemberitahuanModel;
-use App\Models\KoetanModel;
+use App\Models\KontakModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;

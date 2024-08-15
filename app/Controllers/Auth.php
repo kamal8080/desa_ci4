@@ -5,6 +5,9 @@ use App\Models\AuthModel;
 
 class Auth extends BaseController
 {   
+
+
+    
     protected $AuthModel;
 
     public function __construct()
