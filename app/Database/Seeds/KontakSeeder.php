@@ -13,13 +13,7 @@ class KontakSeeder extends Seeder
                 'alamat'     => 'Jl. Sukamaju No. 1',
                 'telepon'    => '081234567890',
                 'email'      => 'kontak@sukamaju.com',
-                'lokasi_map' => '<iframe src="https://maps.google.com"></iframe>',
-            ],
-            [
-                'alamat'     => 'Jl. Mekarjaya No. 2',
-                'telepon'    => '081234567891',
-                'email'      => 'kontak@mekarjaya.com',
-                'lokasi_map' => '<iframe src="https://maps.google.com"></iframe>',
+                'lokasi_map' => 'https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
             ],
             // Tambahkan data dummy sesuai kebutuhan
         ];

@@ -7,7 +7,7 @@ use CodeIgniter\Database\Seeder;
 class BeritaSeeder extends Seeder
 {
     public function run()
-    {
+    { 
         $data = [
             [
                 'judul_berita' => 'Berita Pertama',
