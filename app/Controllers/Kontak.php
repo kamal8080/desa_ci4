@@ -14,8 +14,10 @@ class Kontak extends BaseController
 
     public function index()
     {
+        $data['data'] = $this->KontakModel->get();
+
         return view('partials/header')
-            . view('Kontak');
+            . view('Kontak',$data);
     }
 
     public function AdminKontak()
