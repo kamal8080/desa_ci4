@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\PemberitahuanModel;
+use App\Models\KoetanModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;
@@ -10,12 +11,14 @@ class Pemberitahuan extends BaseController
 {
     protected $PemberitahuanModel;
     protected $validation;
+    protected $KontakModel;
 
     public function __construct()
 
     {
         helper(['url', 'form']);
         $this->PemberitahuanModel = new PemberitahuanModel();
+        $this->KontakModel = new KontakModel();
         $this->validation = \Config\Services::validation();
     }
 
@@ -23,9 +26,11 @@ class Pemberitahuan extends BaseController
     {           
         $PemberitahuanModel = new PemberitahuanModel();
         $data['data'] = $PemberitahuanModel->Get();
+        $kontakModel = new KontakModel();
+        $kontak['kontak'] = $kontakModel->Get();
         return view('themes/header')
             . view('PemberitahuanDanPengumuman', $data)
-            . view('themes/footer');
+            . view('themes/footer', $kontak);
     }
 
     public function AdminPemberitahuan()

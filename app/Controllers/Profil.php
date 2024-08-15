@@ -2,28 +2,32 @@
 
 namespace App\Controllers;
 use App\Models\ProfilModel;
+use App\Models\KontakModel;
 
 class Profil extends BaseController
 {    
     protected $ProfilModel;
     protected $validation;
-
+    protected $kontakModel;
     public function __construct()
 
     {
         helper(['url', 'form']);
         $this->ProfilModel = new ProfilModel();
+        $this->kontakModel = new KontakModel();
         $this->validation = \Config\Services::validation();
     }
 
     public function index()
     {   
+        $kontakModel = new KontakModel();
+        $kontak['kontak'] = $kontakModel->Get();
         $profilModel = new ProfilModel();
         $profil['profil'] = $profilModel->Get();
 
     return view('partials/header')
     . view('Profil', $profil)
-    . view('partials/footer');
+    . view('partials/footer', $kontak);
     }
 
     public function AdminProfil()

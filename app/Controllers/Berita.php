@@ -3,13 +3,14 @@
 namespace App\Controllers;
 use App\Models\BeritaModel;
 use App\Models\PemberitahuanModel;
+use App\Models\KontakModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;
 
 class Berita extends BaseController
 {
-
+    protected $kontakModel;
     protected $beritaModel;
     protected $pemberitahuanModel; 
     protected $validation;
@@ -19,6 +20,7 @@ class Berita extends BaseController
         helper(['url', 'form']);
         $this->beritaModel = new BeritaModel();
         $this->pemberitahuanModel = new PemberitahuanModel();
+        $this->kontakModel = new KontakModel();
         $this->validation = \Config\Services::validation();
 
     }
@@ -29,10 +31,12 @@ class Berita extends BaseController
         $berita['berita'] = $beritaModel->Get();
         $pemberitahuanModel = new PemberitahuanModel();
         $pemberitahuan['pemberitahuan'] = $pemberitahuanModel->Get();
+        $kontakModel = new KontakModel();
+        $kontak['kontak'] = $kontakModel->Get();
         $data = array_merge($berita, $pemberitahuan);
         return view('partials/header')
             . view('BeritaDanPengumuman', $data)
-            . view('partials/footer');
+            . view('partials/footer', $kontak);
     }
 
     public function AdminBerita()

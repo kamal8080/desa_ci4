@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\KependudukanModel;
+use App\Models\KontakModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;
@@ -17,6 +18,7 @@ class Kependudukan extends BaseController
     {
         helper(['url', 'form']);
         $this->KependudukanModel = new KependudukanModel();
+        $this->kontakModel = new KontakModel();
         $this->validation = \Config\Services::validation();
     }
 
@@ -24,10 +26,11 @@ class Kependudukan extends BaseController
     {   
         $kependudukanModel = new KependudukanModel();
         $kependudukan['kependudukan'] = $kependudukanModel->Get();
-
+        $kontakModel = new KontakModel();
+        $kontak['kontak'] = $kontakModel->Get();
         return view('partials/header')
             . view('KependudukanDanFasilitasDesa', $kependudukan)
-            . view('partials/footer');
+            . view('partials/footer', $kontak);
 
     }
 
