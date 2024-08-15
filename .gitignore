@@ -71,3 +71,5 @@ Thumbs.db
 *.log
 *.cache
 *.pid
+
+public/uploads/*
