@@ -1,5 +1,5 @@
-<?php if (isset($data) && is_iterable($data)): ?>
-    <?php foreach($data as $b): ?>
+<?php if (isset($kontak) && is_iterable($kontak)): ?>
+    <?php foreach($kontak as $b): ?>
 <section class="py-5" style="background-color: #F6F6F6;" id="contact">
     <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">

@@ -1,5 +1,5 @@
-<?php if (isset($data) && is_iterable($data)): ?>
-    <?php foreach($data as $b): ?>
+<?php if (isset($kependudukan) && is_iterable($kependudukan)): ?>
+    <?php foreach($kependudukan as $b): ?>
 <section class="py-5 bg-light" id="kependudukan">
     <div class="container px-5 my-5">
         <div class="text-center mb-5">
