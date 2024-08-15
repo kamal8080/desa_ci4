@@ -39,8 +39,8 @@ class Pemberitahuan extends BaseController
     }
 
 
-public function TambahData()
-{
+    public function TambahData()
+    {
     $PemberitahuanModel = new PemberitahuanModel();
 
         $data = [
@@ -52,7 +52,7 @@ public function TambahData()
         $PemberitahuanModel->TambahData($data);
         return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data berhasil ditambahkan');
 
-}
+    }
 
     public function HapusData($id)
     {
@@ -67,7 +67,7 @@ public function TambahData()
     }
 
     public function EditData($id)
-{
+    {
     $PemberitahuanModel = new PemberitahuanModel();
     $Pemberitahuan = $PemberitahuanModel->find($id);
     if ($Pemberitahuan) {
@@ -77,10 +77,10 @@ public function TambahData()
             'isi' => $this->request->getPost('isi'),
         ];
         $PemberitahuanModel->update($id, $data);
-        return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data berhasil diperbarui');
+        return redirect()->to('/dashboard/pemberitahuan')->with('pesan', 'Data Pemberitahuan berhasil diperbarui');
     } else {
-        return redirect()->back()->with('pesan', 'Data tidak ditemukan');
+        return redirect()->back()->with('pesan', 'Data Pemberitahuan gagal diperbarui');
     }
-}
+    }
 
 }
