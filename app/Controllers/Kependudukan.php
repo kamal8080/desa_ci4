@@ -21,9 +21,12 @@ class Kependudukan extends BaseController
     }
 
     public function index()
-    { 
+    {   
+        $kependudukanModel = new KependudukanModel();
+        $data['data'] = $kependudukanModel->Get();
+
         return view('partials/header')
-            . view('KependudukanDanFasilitasDesa')
+            . view('KependudukanDanFasilitasDesa', $data)
             . view('partials/footer');
 
     }
