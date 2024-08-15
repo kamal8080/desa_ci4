@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\BeritaModel;
+use App\Models\PemberitahuanModel;
 
 use CodeIgniter\HTTP\Files\UploadedFile;
 use CodeIgniter\Validation\Validation;
@@ -10,20 +11,27 @@ class Berita extends BaseController
 {
 
     protected $beritaModel;
+    protected $pemberitahuanModel; 
     protected $validation;
 
     public function __construct()
     {
         helper(['url', 'form']);
         $this->beritaModel = new BeritaModel();
+        $this->pemberitahuanModel = new PemberitahuanModel();
         $this->validation = \Config\Services::validation();
 
     }
 
     public function index()
-    {   
+    {    
+        $beritaModel = new BeritaModel();
+        $berita['berita'] = $beritaModel->Get();
+        $pemberitahuanModel = new PemberitahuanModel();
+        $pemberitahuan['pemberitahuan'] = $pemberitahuanModel->Get();
+        $data = array_merge($berita, $pemberitahuan);
         return view('partials/header')
-            . view('BeritaDanPengumuman')
+            . view('BeritaDanPengumuman', $data)
             . view('partials/footer');
     }
 

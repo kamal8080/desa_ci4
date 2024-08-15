@@ -7,41 +7,39 @@
         <div class="row gx-5">
             <!-- Berita Terkini -->
             <div class="col-lg-6">
-                <h3 class="fw-bolder">Berita Terkini</h3>
-                <div class="card mb-4 shadow border-0">
-                    <img class="card-img-top" src="https://dummyimage.com/600x400" alt="Judul Berita 1" style="max-height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bolder">Judul Berita 1</h5>
-                        <p class="card-text text-muted">Isi berita 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                        <a href="#!" class="stretched-link">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="card mb-4 shadow border-0">
-                    <img class="card-img-top" src="https://dummyimage.com/600x400" alt="Judul Berita 2" style="max-height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bolder">Judul Berita 2</h5>
-                        <p class="card-text text-muted">Isi berita 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                        <a href="#!" class="stretched-link">Baca Selengkapnya</a>
-                    </div>
-                </div>
+            <h3 class="fw-bolder">Berita Terkini</h3>
+            <?php if (isset($berita) && is_iterable($berita)): ?>
+                    <?php foreach($berita as $b): ?>
+                        <div class="card mb-4 shadow border-0">
+                            <img class="card-img-top" src="<?php echo base_url('uploads/berita/' . $b['gambar']) ?>" alt="<?= esc($b['judul_berita']) ?>" style="max-height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bolder"><?= $b['judul_berita'] ?></h5>
+                                <p class="card-text text-muted"><?= $b['isi_berita'] ?></p>
+                                <a href="#!" class="stretched-link">Baca Selengkapnya</a>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                <?php else: ?>
+                    <p>Tidak ada berita terkini.</p>
+                <?php endif ?>
             </div>
             <!-- Pengumuman -->
             <div class="col-lg-6">
-                <h3 class="fw-bolder">Pengumuman</h3>
-                <div class="card mb-4 shadow border-0">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bolder">Judul Pengumuman 1</h5>
-                        <p class="card-text text-muted">Isi pengumuman 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                        <a href="#!" class="stretched-link">Baca Selengkapnya</a>
-                    </div>
+    <h3 class="fw-bolder">Pengumuman</h3>
+    <?php if (isset($pemberitahuan) && is_iterable($pemberitahuan)): ?>
+        <?php foreach($pemberitahuan as $b): ?>
+            <div class="card mb-4 shadow border-0">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder"><?= esc($b['judul']) ?></h5>
+                    <p class="card-text text-muted"><?= esc($b['isi']) ?></p>
+                    <a href="#!" class="stretched-link">Baca Selengkapnya</a>
                 </div>
-                <div class="card mb-4 shadow border-0">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bolder">Judul Pengumuman 2</h5>
-                        <p class="card-text text-muted">Isi pengumuman 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                        <a href="#!" class="stretched-link">Baca Selengkapnya</a>
-                    </div>
-                </div>
+            </div>
+        <?php endforeach ?>
+    <?php else: ?>
+        <p>Tidak ada pemberitahuan terkini.</p>
+    <?php endif ?>
+</div>
             </div>
         </div>
     </div>
