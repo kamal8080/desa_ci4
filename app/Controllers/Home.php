@@ -47,7 +47,7 @@ class Home extends BaseController
             . view('profil', $profil)
             . view('layanan', $data)
             . view('BeritaDanPengumuman', $data)
-            . view('KependudukanDanFasilitasDesa',$kependudukan)
+            . view('KependudukanDanFasilitasDesa')
             . view('kontak', $kontak)
             . view('partials/footer',$kontak);
     }

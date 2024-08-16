@@ -43,6 +43,9 @@ $routes->post('dashboard/profil/EditData/(:num)', 'Profil::EditData/$1');
 // ADMIN KEPENDUDUKAN
 $routes->get('dashboard/kependudukan', 'Kependudukan::AdminKependudukan');
 $routes->post('dashboard/kependudukan/EditData/(:num)', 'Kependudukan::EditData/$1');
+$routes->get('dashboard/kependudukan/chart', 'Kependudukan::ChartKependudukan');
+$routes->post('dashboard/kependudukan/HapusData/(:num)', 'Kependudukan::HapusData/$1');
+
 
 // ADMIN KONTAK
 $routes->get('dashboard/kontak', 'Kontak::AdminKontak');

@@ -14,49 +14,59 @@ class CreatePendudukTable extends Migration
                 'constraint'     => 11,
                 'auto_increment' => true,
             ],
-            'jumlah_penduduk' => [
+            'nama' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'nik' => [
+                'type'       => 'CHAR',
+                'constraint' => 16,
+                'unique'     => true,
+            ],
+            'no_kk' => [
+                'type'       => 'CHAR',
+                'constraint' => 16,
+            ],
+            'nama_ayah' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'nama_ibu' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'alamat' => [
+                'type'       => 'TEXT',
+            ],
+            'dusun' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+            ],
+            'rw' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 10,
+            ],
+            'rt' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 10,
+            ],
+            'umur' => [
                 'type'       => 'INT',
                 'constraint' => 11,
             ],
-            'laki_laki' => [
-                'type'       => 'INT',
-                'constraint' => 11,
+            'pekerjaan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
             ],
-            'perempuan' => [
-                'type'       => 'INT',
-                'constraint' => 11,
+            'jenis_kelamin' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 10,
+                'null'       => true,
             ],
-            'jumlah_kepala_keluarga' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_rt' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_rw' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_sekolah' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_puskesmas' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_balaidesa' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_tempat_ibadah' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-            ],
-            'jumlah_pasar_desa' => [
-                'type'       => 'INT',
-                'constraint' => 11,
+            'agama' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 20,
+                'null'       => true,
             ],
         ]);
         $this->forge->addKey('id', true);
